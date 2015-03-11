@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dumbagram</title>
+    <link rel="stylesheet" href="bower_components/Ink/dist/css/ink.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container top-space ink-grid">
+        <h1 class="bottom-space">Dumbagram</h1>
+        <div class="column-group top-space">
+            <div class="all-50">
+                <form class="ink-form">
+                    <div class="control-group">
+                        <div class="control append-button">
+                            <span><input type="text" placeholder="Insert the name of something with two or more words..."></span>
+                            <button class="ink-button blue">Go!</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="results" class="column-group hide-all">
+            <h3>Results</h3>
+            <div class="all-50">
+                <table class="ink-table">
+                    <thead>
+                        <tr>
+                            <th>Original</th>
+                            <th>Dumbered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="bower_components/Ink/dist/js/ink.min.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
