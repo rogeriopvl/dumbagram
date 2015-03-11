@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dumbagram</title>
     <link rel="stylesheet" href="bower_components/Ink/dist/css/ink.min.css">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     <div class="container top-space ink-grid">
-        <h1 class="bottom-space">Dumbagram</h1>
+        <h1 class="bottom-space align-center">Dumbagram</h1>
         <div class="column-group top-space">
-            <div class="all-50 small-100">
+            <div class="all-10">&nbsp;</div>
+            <div class="all-80">
                 <form class="ink-form">
-                    <div class="control-group">
+                    <div class="control-group all-100">
                         <div class="control append-button">
                             <span><input type="text" placeholder="Insert the name of something with two or more words..."></span>
                             <button class="ink-button blue">Go!</button>
@@ -20,17 +22,18 @@
                     </div>
                 </form>
             </div>
+            <div class="all-10">&nbsp;</div>
         </div>
 
         <div class="column-group top-space">
-            <div id="result" class="all-50 small-100">
+            <div id="result" class="all-100">
                 <h1 class="fw-100 align-center"></h1>
             </div>
         </div>
 
         <div id="history" class="column-group top-space hide-all">
-            <h3>History</h3>
-            <div class="all-50 small-100">
+            <h3 class="align-center">History</h3>
+            <div class="all-100">
                 <table class="ink-table hover">
                     <thead>
                         <tr>
