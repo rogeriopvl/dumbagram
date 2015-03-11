@@ -1,3 +1,7 @@
 body {
     background-color: #ccc;
 }
+
+#result h1 {
+    font-size: 350%;
+}

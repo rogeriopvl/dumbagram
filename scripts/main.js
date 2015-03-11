@@ -30,10 +30,11 @@
 
     form.addEventListener('submit', function (ev) {
         if (document.querySelectorAll('td').length < 1) {
-            document.querySelector('#results').classList.remove('hide-all');
+            document.querySelector('#history').classList.remove('hide-all');
         }
         ev.preventDefault();
         var res = swapInitials(input.value);
+        document.querySelector('#result h1').textContent = res;
         var tr = document.createElement('tr');
         tr.innerHTML = [
             '<td class="align-center">' + input.value + '</td>',
