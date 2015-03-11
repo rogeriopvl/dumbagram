@@ -3,18 +3,30 @@
     var table = document.querySelector('table');
     var input = form.querySelector('input');
 
-    var replaceAt = function(str, index, ch) {
-        return str.substr(0, index) + ch + str.substr(index + ch.length);
+    var STOP_WORDS = [
+        'of', 'the', 'a'
+    ];
+
+    var swapInitials = function (s) {
+        s = s.split(/\s+/g);
+
+        var division = Math.floor(s.length / 2);
+        var last = s.length - 1;
+
+        var tmp = '';
+
+        for (var i = 0; i < division; i++) {
+            tmp = s[i][0]
+
+            if (STOP_WORDS.indexOf(s[i].toLowerCase()) !== -1
+                || STOP_WORDS.indexOf(s[last - i].toLowerCase()) !== -1) continue;
+
+            s[i] = s[last - i][0] + s[i].substring(1)
+            s[last - i] = tmp + s[last - i].substring(1)
+        }
+
+        return s.join(' ');
     }
-
-    var swapInitials = function (text) {
-        var words = text.split(' ');
-        var tmpWord1 = replaceAt(words[0], 0, words[1].charAt(0));
-        words[1] = replaceAt(words[1], 0, words[0].charAt(0));
-        words[0] = tmpWord1;
-
-        return words.join(' ');
-    };
 
     form.addEventListener('submit', function (ev) {
         if (document.querySelectorAll('td').length < 1) {
