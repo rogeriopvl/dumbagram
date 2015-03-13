@@ -28,11 +28,13 @@
         return s.join(' ');
     }
 
-    form.addEventListener('submit', function (ev) {
+    var formSubmit = function (ev) {
         if (document.querySelectorAll('td').length < 1) {
             document.querySelector('#history').classList.remove('hide-all');
         }
-        ev.preventDefault();
+
+        if (ev) { ev.preventDefault(); }
+
         var res = swapInitials(input.value);
         document.querySelector('#result h1').textContent = res;
         var tr = document.createElement('tr');
@@ -41,5 +43,18 @@
             '<td class="align-center">' + res + '</td>'
         ].join('');
         table.appendChild(tr);
+
+    };
+
+    if (window.location.hash) {
+        input.value = window.location.hash.substr(1);
+        formSubmit();
+    }
+
+    window.addEventListener('hashchange', function (ev) {
+        input.value = window.location.hash.substr(1);
+        formSubmit();
     });
+
+    form.addEventListener('submit', formSubmit);
 })();
