@@ -46,15 +46,13 @@
 
     };
 
-    if (window.location.hash) {
+    var hashCallback = function () {
         input.value = window.location.hash.substr(1);
         formSubmit();
-    }
+    };
 
-    window.addEventListener('hashchange', function (ev) {
-        input.value = window.location.hash.substr(1);
-        formSubmit();
-    });
+    if (window.location.hash) { hashCallback(); }
+    window.addEventListener('hashchange', hashCallback);
 
     form.addEventListener('submit', formSubmit);
 })();
