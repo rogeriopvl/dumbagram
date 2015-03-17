@@ -1,10 +1,15 @@
 (function () {
+    var firebase = new Firebase('https://blistering-torch-7660.firebaseio.com/');
+    var fbErrors = new Firebase('https://blistering-torch-7660.firebaseio.com/errors');
+
+    window.onerror = function (errorMsg, url, lineNumber) {
+        fbErrors.push({ message: errorMsg, url: url, line: lineNumber });
+    }
+
     var form = document.querySelector('form');
     var table = document.querySelector('table');
     var input = form.querySelector('input');
     var historyDiv = document.querySelector('#history');
-
-    var firebase = new Firebase('https://blistering-torch-7660.firebaseio.com/');
 
     var STOP_WORDS = [
         'of', 'the', 'a', 'in'
