@@ -101,6 +101,7 @@
     form.addEventListener('submit', formSubmit);
 
     document.querySelector('button.orange').addEventListener('click', function () {
+        historyCache = [];
         delete localStorage.dumbagram;
         historyDiv.classList.add('hide-all');
     });
