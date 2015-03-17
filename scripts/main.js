@@ -4,6 +4,8 @@
     var input = form.querySelector('input');
     var historyDiv = document.querySelector('#history');
 
+    var firebase = new Firebase('https://blistering-torch-7660.firebaseio.com/');
+
     var STOP_WORDS = [
         'of', 'the', 'a', 'in'
     ];
@@ -58,6 +60,11 @@
         table.appendChild(tr);
 
         historyCache.push(items);
+        firebase.set({
+            original: items[0],
+            dumbered: items[1],
+            createdAt: new Date().getTime()
+        });
 
         if (historyCache.length > 0) {
             historyDiv.classList.remove('hide-all');
