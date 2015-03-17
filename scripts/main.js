@@ -60,11 +60,6 @@
         table.appendChild(tr);
 
         historyCache.push(items);
-        firebase.push({
-            original: items[0],
-            dumbered: items[1],
-            createdAt: new Date().getTime()
-        });
 
         if (historyCache.length > 0) {
             historyDiv.classList.remove('hide-all');
@@ -77,6 +72,12 @@
         var res = swapInitials(input.value);
         document.querySelector('#result h1').textContent = res;
         addToHistory([input.value, res]);
+
+        firebase.push({
+            original: input.value,
+            dumbered: res,
+            createdAt: new Date().getTime()
+        });
 
         window.localStorage.dumbagram = JSON.stringify(historyCache);
     };
