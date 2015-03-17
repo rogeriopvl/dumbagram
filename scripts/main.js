@@ -60,7 +60,7 @@
         table.appendChild(tr);
 
         historyCache.push(items);
-        firebase.set({
+        firebase.push({
             original: items[0],
             dumbered: items[1],
             createdAt: new Date().getTime()
