@@ -1,0 +1,18 @@
+CACHE MANIFEST
+# 2014-03-18:v1
+
+CACHE:
+favicon.ico
+images/icon192.png
+images/icon128.png
+scripts/main.js
+bower_components/firebase/firebase.js
+styles/main.css
+bower_components/Ink/dist/css/ink.min.css
+bower_components/Ink/dist/fonts/Roboto/roboto-bold-webfont.woff
+bower_components/Ink/dist/fonts/Roboto/roboto-regular-webfont.woff
+bower_components/Ink/dist/fonts/Roboto/roboto-light-webfont.woff
+bower_components/Ink/dist/fonts/Roboto/roboto-thin-webfont.woff
+
+NETWORK:
+*
