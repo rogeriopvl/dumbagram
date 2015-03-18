@@ -3,7 +3,7 @@
     "name": "Switch the first letter of words!",
     "icons": [
         {
-            "src": "icon192.png",
+            "src": "images/icon192.png",
             "sizes": "192x192",
             "type": "image/png"
         }
