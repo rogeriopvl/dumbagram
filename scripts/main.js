@@ -17,6 +17,9 @@
 
     var historyCache;
 
+    // stub localStorage to avoid errors
+    if (!window.localStorage) { window.localStorage = {} };
+
     if (window.localStorage.dumbagram) {
         historyCache = JSON.parse(window.localStorage.dumbagram);
         if (historyCache.constructor === Array) {
