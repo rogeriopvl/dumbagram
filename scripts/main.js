@@ -10,6 +10,9 @@
     var table = document.querySelector('table');
     var input = form.querySelector('input');
     var historyDiv = document.querySelector('#history');
+    var share = document.querySelector('#share');
+
+    var inputText = '';
 
     var STOP_WORDS = [
         'of', 'the', 'a', 'in'
@@ -27,6 +30,20 @@
         }
     } else {
         historyCache = {};
+    }
+
+    var selectText = function (element) {
+        if (document.body.createTextRange) { // ms
+            var range = document.body.createTextRange();
+            range.moveToElementText(element);
+            range.select();
+        } else if (window.getSelection) { // moz, opera, webkit
+            var selection = window.getSelection();
+            var range = document.createRange();
+            range.selectNodeContents(element);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
     }
 
     var swapInitials = function (s) {
@@ -56,7 +73,7 @@
             '<td class="align-center">' + items[0] + '</td>',
             '<td class="align-center">' + items[1] + '</td>'
         ].join('');
-        table.appendChild(tr);
+        table.querySelector('tbody').appendChild(tr);
 
         historyCache[items[0]] = items[1];
 
@@ -68,17 +85,24 @@
     var formSubmit = function (ev) {
         if (ev) { ev.preventDefault(); }
 
-        var res = swapInitials(input.value);
+        inputText = input.value.trim();
+
+        if (inputText.length < 1) { return false; }
+
+        share.classList.add('hide-all');
+
+        var res = swapInitials(inputText);
         document.querySelector('#result h1').textContent = res;
-        addToHistory([input.value, res]);
+        addToHistory([inputText, res]);
 
         firebase.push({
-            original: input.value,
+            original: inputText,
             dumbered: res,
             createdAt: new Date().getTime()
         });
 
         window.localStorage.dumbagram = JSON.stringify(historyCache);
+        input.value = '';
     };
 
     var hashCallback = function () {
@@ -94,9 +118,24 @@
 
     form.addEventListener('submit', formSubmit);
 
+    document.querySelector('#result').addEventListener('click', function () {
+        var shareLink = share.querySelector('a');
+
+        share.classList.remove('hide-all');
+        var urlParts = window.location.href.split('#');
+        var shareURL = urlParts[0] + '#' + encodeURIComponent(inputText);
+        shareLink.href = shareURL;
+        shareLink.textContent = shareURL;
+        selectText(shareLink);
+    });
+
     document.querySelector('button.orange').addEventListener('click', function () {
-        historyCache = [];
-        delete localStorage.dumbagram;
+        var tableBody = table.querySelector('tbody');
+        historyCache = {};
+        localStorage.dumbagram = '{}';
+        while (tableBody.firstChild) {
+            tableBody.removeChild(tableBody.firstChild);
+        }
         historyDiv.classList.add('hide-all');
     });
 })();

@@ -2,6 +2,37 @@ body {
     background-color: #fff;
 }
 
+#result {
+    position: relative;
+}
+
 #result h1 {
     font-size: 350%;
+}
+
+#result:hover {
+    background-color: #fffcde;
+}
+
+#result h1:hover + .share-tip-container {
+    display: block;
+}
+
+.share-tip-container {
+    display: none;
+}
+
+.share-tip {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    color: #969483;
+    pointer-events: none;
+}
+
+#share {
+    background-color: rgba(255, 252, 222, 0.6);
+    padding: 2em;
+    border-radius: 5px;
+    display: block;
 }
